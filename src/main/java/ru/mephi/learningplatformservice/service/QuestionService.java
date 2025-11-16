@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.mephi.learningplatformservice.dto.request.QuestionRequestDto;
 import ru.mephi.learningplatformservice.dto.response.QuestionResponseDto;
+import ru.mephi.learningplatformservice.exception.EntityNotFoundException;
 import ru.mephi.learningplatformservice.mapper.QuestionMapper;
 import ru.mephi.learningplatformservice.model.Question;
 import ru.mephi.learningplatformservice.model.Quiz;
@@ -30,6 +31,6 @@ public class QuestionService {
 
     public Question getQuestionEntityById(Integer questionId) {
         return questionRepository.findById(questionId)
-                .orElseThrow(() -> new RuntimeException("вопрос с указанным ID не найден."));
+                .orElseThrow(() -> new EntityNotFoundException("вопрос с указанным ID не найден."));
     }
 }

@@ -1,5 +1,6 @@
 package ru.mephi.learningplatformservice.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class QuizSubmissionController {
     private final QuizSubmissionService quizSubmissionService;
 
     @PostMapping
-    public ResponseEntity<QuizSubmissionResponseDto> submitQuiz(@RequestBody QuizSubmissionRequestDto quizSubmissionRequestDto) {
+    public ResponseEntity<QuizSubmissionResponseDto> submitQuiz(@Valid @RequestBody QuizSubmissionRequestDto quizSubmissionRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body(quizSubmissionService.takeQuiz(quizSubmissionRequestDto));
     }

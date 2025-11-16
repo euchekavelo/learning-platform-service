@@ -1,5 +1,6 @@
 package ru.mephi.learningplatformservice.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,7 +20,7 @@ public class CategoryController {
     private final CategoryService categoryService;
 
     @PostMapping
-    public ResponseEntity<CategoryResponseDto> addCategory(@RequestBody CategoryRequestDto categoryRequestDto) {
+    public ResponseEntity<CategoryResponseDto> addCategory(@Valid @RequestBody CategoryRequestDto categoryRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(categoryService.addCategory(categoryRequestDto));
     }
 }

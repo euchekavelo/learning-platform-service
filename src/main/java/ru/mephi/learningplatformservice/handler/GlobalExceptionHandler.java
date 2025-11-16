@@ -3,6 +3,7 @@ package ru.mephi.learningplatformservice.handler;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.mephi.learningplatformservice.dto.response.ErrorResponseDto;
@@ -16,7 +17,7 @@ public class GlobalExceptionHandler {
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(getErrorResponseDto(ex.getMessage()));
     }
 
-    @ExceptionHandler(UnsupportedOperationException.class)
+    @ExceptionHandler({UnsupportedOperationException.class, MethodArgumentNotValidException.class})
     public ResponseEntity<ErrorResponseDto> handleBadRequestException(Exception ex) {
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(getErrorResponseDto(ex.getMessage()));
     }

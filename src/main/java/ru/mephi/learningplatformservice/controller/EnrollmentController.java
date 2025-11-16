@@ -1,5 +1,6 @@
 package ru.mephi.learningplatformservice.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -16,7 +17,7 @@ public class EnrollmentController {
     private final EnrollmentService enrollmentService;
 
     @PostMapping
-    public ResponseEntity<EnrollmentResponseDto> createEnroll(@RequestBody EnrollmentRequestDto enrollmentRequestDto) {
+    public ResponseEntity<EnrollmentResponseDto> createEnroll(@Valid @RequestBody EnrollmentRequestDto enrollmentRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(enrollmentService.createEnroll(enrollmentRequestDto));
     }
 

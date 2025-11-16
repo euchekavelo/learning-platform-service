@@ -1,5 +1,6 @@
 package ru.mephi.learningplatformservice.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class AssignmentController {
     private final SubmissionService submissionService;
 
     @PostMapping
-    public ResponseEntity<AssignmentResponseDto> addAssignment(@RequestBody AssignmentRequestDto assignmentRequestDto) {
+    public ResponseEntity<AssignmentResponseDto> addAssignment(@Valid @RequestBody AssignmentRequestDto assignmentRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(assignmentService.addAssignment(assignmentRequestDto));
     }
 
