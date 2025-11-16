@@ -58,12 +58,14 @@ public class CourseService {
 
     public List<CourseResponseDto> getUserCourses(Integer userId) {
         User user = userService.getUserEntityById(userId);
-        if (!user.getRole().equals(Role.STUDENT)) {
-            throw new UnsupportedOperationException("Указанный пользователь не обладает ролью STUDENT.");
-        }
+        userService.checkUserIsAdminOrStudent(user.getId());
 
         return courseRepository.getCoursesByUserId(userId).stream()
                 .map(courseMapper::toCourseResponseDto)
                 .toList();
+    }
+
+    public CourseResponseDto getCourseById(Integer courseId) {
+        return courseMapper.toCourseResponseDto(getCourseEntityById(courseId));
     }
 }

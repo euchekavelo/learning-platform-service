@@ -1,6 +1,5 @@
 package ru.mephi.learningplatformservice.service;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.mephi.learningplatformservice.dto.request.ModuleRequestDto;
@@ -21,8 +20,11 @@ public class ModuleService {
     private final ModuleRepository moduleRepository;
     private final CourseService courseService;
     private final ModuleMapper moduleMapper;
+    private final UserService userService;
 
-    public ModuleResponseDto addModules(@Valid ModuleRequestDto moduleRequestDto) {
+    public ModuleResponseDto addModules(ModuleRequestDto moduleRequestDto) {
+        userService.checkUserIsAdminOrTeacher(moduleRequestDto.getUserId());
+
         if (moduleRequestDto.getModuleComponents().isEmpty()) {
             throw new UnsupportedOperationException("Отсутствует информация о модулях курса.");
         }

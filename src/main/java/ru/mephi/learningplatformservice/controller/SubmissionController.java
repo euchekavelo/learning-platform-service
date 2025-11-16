@@ -3,10 +3,8 @@ package ru.mephi.learningplatformservice.controller;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import ru.mephi.learningplatformservice.dto.request.EvaluateRequestDto;
 import ru.mephi.learningplatformservice.dto.request.SubmissionRequestDto;
 import ru.mephi.learningplatformservice.dto.response.SubmissionResponseDto;
 import ru.mephi.learningplatformservice.service.SubmissionService;
@@ -21,5 +19,12 @@ public class SubmissionController {
     @PostMapping
     public ResponseEntity<SubmissionResponseDto> sendSubmission(@RequestBody SubmissionRequestDto submissionRequestDto) {
         return ResponseEntity.status(HttpStatus.CREATED).body(submissionService.sendSubmission(submissionRequestDto));
+    }
+
+    @PatchMapping("/{submissionId}")
+    public ResponseEntity<SubmissionResponseDto> evaluateSubmission(@PathVariable Integer submissionId,
+                                                                    @RequestBody EvaluateRequestDto evaluateRequestDto) {
+
+        return ResponseEntity.ok(submissionService.evaluateSubmission(submissionId, evaluateRequestDto));
     }
 }

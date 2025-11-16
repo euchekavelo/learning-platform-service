@@ -47,7 +47,7 @@ public class EnrollmentService {
         return EnrollmentResponseDto.builder()
                 .id(savedEnrollment.getId())
                 .enrollDate(savedEnrollment.getEnrollDate())
-                .status(savedEnrollment.getEnrollDate().toString())
+                .status(savedEnrollment.getStatus().toString())
                 .build();
     }
 

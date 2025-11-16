@@ -41,4 +41,18 @@ public class UserService {
                 .map(userMapper::toUserResponseDto)
                 .collect(Collectors.toList());
     }
+
+    public void checkUserIsAdminOrTeacher(Integer userId) {
+        User user = getUserEntityById(userId);
+        if (!(user.getRole().name().equals("ADMIN") || user.getRole().name().equals("TEACHER"))) {
+            throw new UnsupportedOperationException("Пользователь не обладает ролью ADMIN или TEACHER.");
+        }
+    }
+
+    public void checkUserIsAdminOrStudent(Integer userId) {
+        User user = getUserEntityById(userId);
+        if (!(user.getRole().name().equals("ADMIN") || user.getRole().name().equals("STUDENT"))) {
+            throw new UnsupportedOperationException("Пользователь не обладает ролью ADMIN или STUDENT.");
+        }
+    }
 }

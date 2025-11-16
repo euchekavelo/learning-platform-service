@@ -7,6 +7,7 @@ import java.util.List;
 @Data
 public class ModuleRequestDto {
 
+    private Integer userId;
     private Integer courseId;
     private List<ModuleComponentRequestDto> moduleComponents;
 }

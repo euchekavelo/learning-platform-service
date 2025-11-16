@@ -2,12 +2,11 @@ package ru.mephi.learningplatformservice.dto.request;
 
 import lombok.Data;
 
-import java.util.List;
-
 @Data
-public class LessonRequestDto {
+public class QuizRequestDto {
 
     private Integer userId;
     private Integer moduleId;
-    private List<LessonComponentRequestDto> newLessons;
+    private String title;
+    private Integer timeLimit;
 }

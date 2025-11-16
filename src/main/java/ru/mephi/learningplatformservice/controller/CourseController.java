@@ -26,6 +26,11 @@ public class CourseController {
         return ResponseEntity.status(HttpStatus.CREATED).body(courseService.addCourse(courseRequestDto));
     }
 
+    @GetMapping("/{courseId}")
+    public ResponseEntity<CourseResponseDto> getCourseById(@PathVariable Integer courseId) {
+        return ResponseEntity.ok(courseService.getCourseById(courseId));
+    }
+
     @PutMapping("/{courseId}")
     private ResponseEntity<CourseResponseDto> updateCourse(@PathVariable Integer courseId,
                                                            @Valid @RequestBody CourseRequestDto courseRequestDto) {

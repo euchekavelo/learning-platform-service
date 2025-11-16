@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@Table(name = "anser_options")
+@Table(name = "answer_options")
 @Getter
 @Setter
 @AllArgsConstructor

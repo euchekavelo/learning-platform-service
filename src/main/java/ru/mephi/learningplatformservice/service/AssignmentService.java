@@ -8,8 +8,6 @@ import ru.mephi.learningplatformservice.exception.EntityNotFoundException;
 import ru.mephi.learningplatformservice.mapper.AssignmentMapper;
 import ru.mephi.learningplatformservice.model.Assignment;
 import ru.mephi.learningplatformservice.model.Lesson;
-import ru.mephi.learningplatformservice.model.User;
-import ru.mephi.learningplatformservice.model.enums.Role;
 import ru.mephi.learningplatformservice.repository.AssignmentRepository;
 
 @Service
@@ -22,10 +20,7 @@ public class AssignmentService {
     private final LessonService lessonService;
 
     public AssignmentResponseDto addAssignment(AssignmentRequestDto assignmentRequestDto) {
-        User findedUser = userService.getUserEntityById(assignmentRequestDto.getUserId());
-        if (!findedUser.getRole().equals(Role.TEACHER)) {
-            throw new UnsupportedOperationException("Пользователь должен обладать ролью TEACHER.");
-        }
+        userService.checkUserIsAdminOrTeacher(assignmentRequestDto.getUserId());
 
         Lesson findedLesson = lessonService.getLessonEntityById(assignmentRequestDto.getLessonId());
         Assignment assignment = assignmentMapper.toAssignment(assignmentRequestDto);

@@ -5,11 +5,14 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "quiz_submissions")
+@Table(name = "quiz_submissions",
+       uniqueConstraints = @UniqueConstraint(columnNames = {"student_id", "quiz_id"})
+)
 @Getter
 @Setter
 @AllArgsConstructor
@@ -22,6 +25,7 @@ public class QuizSubmission {
 
     private Integer score;
 
+    @CreationTimestamp
     private LocalDateTime takenAt;
 
     @ManyToOne(fetch = FetchType.LAZY)

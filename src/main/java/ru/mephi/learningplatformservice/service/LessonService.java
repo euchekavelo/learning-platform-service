@@ -20,10 +20,14 @@ public class LessonService {
     private final LessonRepository lessonRepository;
     private final ModuleService moduleService;
     private final LessonMapper lessonMapper;
+    private final UserService userService;
 
     public LessonResponseDto addLessons(LessonRequestDto lessonRequestDto) {
+        userService.checkUserIsAdminOrTeacher(lessonRequestDto.getUserId());
+
         Module findedModule = moduleService.getModuleEntityById(lessonRequestDto.getModuleId());
         List<Lesson> lessons = lessonMapper.toLessons(lessonRequestDto.getNewLessons());
+        lessons.forEach(lesson -> lesson.setModule(findedModule));
         List<Lesson> savedLessons = lessonRepository.saveAll(lessons);
         List<LessonComponentResponseDto> lessonComponentResponseDtoList
                 = lessonMapper.toLessonComponentResponseDtoList(savedLessons);
