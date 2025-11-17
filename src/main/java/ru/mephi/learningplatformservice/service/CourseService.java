@@ -57,9 +57,6 @@ public class CourseService {
     }
 
     public List<CourseResponseDto> getUserCourses(Integer userId) {
-        User user = userService.getUserEntityById(userId);
-        userService.checkUserIsAdminOrStudent(user.getId());
-
         return courseRepository.getCoursesByUserId(userId).stream()
                 .map(courseMapper::toCourseResponseDto)
                 .toList();

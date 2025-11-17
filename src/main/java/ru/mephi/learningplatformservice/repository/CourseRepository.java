@@ -12,8 +12,8 @@ public interface CourseRepository extends JpaRepository<Course, Integer> {
 
     @Query(value =
             "SELECT cs.* " +
-            "FROM courses cs" +
-            "INNER JOIN enrollments es ON cs.id = es.course_id" +
+            "FROM courses cs " +
+            "INNER JOIN enrollments es ON cs.id = es.course_id " +
             "WHERE es.user_id = :userId", nativeQuery = true)
     List<Course> getCoursesByUserId(Integer userId);
 }

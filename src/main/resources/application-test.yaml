@@ -6,6 +6,10 @@ spring:
     username: ${DATABASE_USER:postgre_user}
     password: ${DATABASE_PASSWORD:postgre_password}
     driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      data-locations: classpath:init/data.sql
+      mode: always
   jpa:
     properties:
       hibernate:
@@ -13,3 +17,4 @@ spring:
     hibernate:
       ddl-auto: create-drop
     show-sql: false
+    defer-datasource-initialization: true

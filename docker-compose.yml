@@ -13,19 +13,19 @@ services:
     volumes:
       - database-data:/var/lib/postgresql
 
-#  learning-platform-service:
-#    build:
-#      context: .
-#    restart: on-failure
-#    ports:
-#      - "8080:8080"
-#    environment:
-#      - ACTIVE_PROFILE=dev
-#      - DATABASE_URL=jdbc:postgresql://psql:5432/learning_platform_db
-#      - DATABASE_USER=postgre_user
-#      - DATABASE_PASSWORD=postgre_password
-#    depends_on:
-#      - psql
+  learning-platform-service:
+    build:
+      context: .
+    restart: on-failure
+    ports:
+      - "8080:8080"
+    environment:
+      - ACTIVE_PROFILE=dev
+      - DATABASE_URL=jdbc:postgresql://psql:5432/learning_platform_db
+      - DATABASE_USER=postgre_user
+      - DATABASE_PASSWORD=postgre_password
+    depends_on:
+      - psql
 
 volumes:
   database-data:

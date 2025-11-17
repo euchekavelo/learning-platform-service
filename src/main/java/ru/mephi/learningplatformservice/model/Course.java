@@ -27,7 +27,6 @@ public class Course {
 
     private String duration;
 
-    @CreationTimestamp
     private Date startDate;
 
     @ManyToOne(fetch = FetchType.LAZY)
