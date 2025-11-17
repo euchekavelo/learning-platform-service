@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "16945376-6b1f-4492-8ea3-49960611589f",
+		"_postman_id": "a92b5be1-34d7-451c-b530-66ee924f02c6",
 		"name": "ORM",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "17944782",
-		"_collection_link": "https://martian-astronaut-931721.postman.co/workspace/Testing-REST-API~bebcc1bd-e2b9-496c-8ac5-fa83eafc70b8/collection/17944782-16945376-6b1f-4492-8ea3-49960611589f?action=share&source=collection_link&creator=17944782"
+		"_collection_link": "https://martian-astronaut-931721.postman.co/workspace/Testing-REST-API~bebcc1bd-e2b9-496c-8ac5-fa83eafc70b8/collection/17944782-a92b5be1-34d7-451c-b530-66ee924f02c6?action=share&source=collection_link&creator=17944782"
 	},
 	"item": [
 		{
@@ -526,7 +526,7 @@
 			"response": []
 		},
 		{
-			"name": "Удалить решение",
+			"name": "Удалить запись студента на курс",
 			"request": {
 				"method": "DELETE",
 				"header": [],
