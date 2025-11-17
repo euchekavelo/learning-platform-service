@@ -129,6 +129,6 @@ learning-platform-service/
 ├── docker-compose.yml                      # Docker Compose для запуска
 ├── Dockerfile                              # Конфигурация Docker образа
 ├── build.gradle.kts                        # Gradle конфигурация
-├── ORM Exam.postman_collection.json        # Коллекция Postman для тестирования
+├── orm_postman_collection                  # Коллекция Postman для тестирования
 └── README.md                               # Документация проекта
 ```
