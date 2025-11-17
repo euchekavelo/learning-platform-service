@@ -1,0 +1,38 @@
+package ru.mephi.learningplatformservice.model;
+
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "quiz_submissions",
+       uniqueConstraints = @UniqueConstraint(columnNames = {"student_id", "quiz_id"})
+)
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class QuizSubmission {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private Integer score;
+
+    @CreationTimestamp
+    private LocalDateTime takenAt;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "student_id", nullable = false)
+    private User student;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "quiz_id", nullable = false)
+    private Quiz quiz;
+}

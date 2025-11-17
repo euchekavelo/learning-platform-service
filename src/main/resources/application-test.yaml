@@ -1,0 +1,20 @@
+spring:
+  application:
+    name: learning-platform-service
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/learning_platform_test_db}
+    username: ${DATABASE_USER:postgre_user}
+    password: ${DATABASE_PASSWORD:postgre_password}
+    driver-class-name: org.postgresql.Driver
+  sql:
+    init:
+      data-locations: classpath:init/data.sql
+      mode: always
+  jpa:
+    properties:
+      hibernate:
+        format_sql: false
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: false
+    defer-datasource-initialization: true
