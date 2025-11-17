@@ -82,7 +82,7 @@ docker-compose up -d
 - `PUT /api/courses/{courseId}` — Обновить информацию о курсе
 - `DELETE /api/courses/{courseId}` — Удалить курс
 - `GET /api/users/{userId}/courses` — Получить информацию о курсах пользователя
-- `DELETE /api/enrollments/{enrollId}` — Удалить решение
+- `DELETE /api/enrollments/{enrollId}` — Удалить запись студента на курс
 - `GET /api/courses/{courseId}` — Получить информацию о курсе
 
 ---
